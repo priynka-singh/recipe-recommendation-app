@@ -8,6 +8,7 @@ A Recipe Recommendation System built with Flask, providing users with personaliz
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Project Structure](#project-structure)
 - [License](#license)
 
 ## Overview
@@ -71,6 +72,16 @@ Contributions to the Recipe Recommendation System are welcome! Here's how you ca
 5. Create a new Pull Request
 
 Please ensure that your code adheres to the project's coding standards and includes appropriate documentation.
+
+## Project Structure
+
+- **env**: Contains the virtual environment for the project.
+- **templates**: Includes HTML templates used for rendering web pages.
+- **static**: Stores static files such as CSS, JavaScript, and images.
+- **.env**: Configuration file for storing environment variables.
+- **app.yaml**: Configuration file for deploying the application on Google Cloud Platform.
+- **Dockerfile**: Defines the steps to create a Docker image for the Flask application.
+- **.dockerignore**: Specifies files and directories to be excluded when building a Docker image.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
