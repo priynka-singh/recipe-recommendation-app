@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&display=swap">
+    <title>Recipe Recommendation System</title>
+    <style>
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: white;
+        color: #333;
+        padding: 0px; 
+        font-size: 16px;
+        margin: 0 auto;
+    }  
+    .top-box {
+        position: relative;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        background-image: url('/static/img/bg_img_tint.jpg');
+        background-size: cover; 
+        background-position: center; 
+        text-align: center;
+    }
+
+    .top-box h1 {
+        color: white;
+        font-size: 32px;
+        font-weight: 300;
+    }
+
+    .bottom-box {
+        padding: 20px;
+        border-radius: 4px;
+        background-color: white; 
+        text-align: center;
+    }
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dropdown-container {
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .dropdown-label, .dropdown-select {
+        width: 300px;
+        margin: 10px auto;
+        display: block;
+        padding: 12px 10px;
+        font-size: 16px;
+        background-color: #eeecf5;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .dropdown-select {
+        display: none;
+        background-color: #fff;
+    }
+    .big-select {
+        height: 200px;
+        overflow-y: auto;
+    }
+    button[type="submit"] {
+        display: block;
+        width: 200px; 
+        height: 45px;
+        padding: 5px 0px; /* Increased padding */
+        font-size: 16px; 
+        margin: 20px auto;
+        background-color:#e9e9f7;
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+    .recipe-box {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        text-align: left;
+    }
+    .recipe-title {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+        margin-top: 15px;
+    }
+    .recipe-ingredients,
+    .recipe-steps {
+        text-align: justify; 
+        margin-bottom: 30px;
+        margin-top: 30px;
+        text-indent: 20px; 
+        margin-left: 60px;
+        font-weight: lighter;
+    }
+
+    #inputIngredients {
+        width: 450px;
+        border: 1px solid #ccc; /* Add border */
+        border-radius: 10px; /* Add border radius for curved edges */
+        padding: 10px; /* Add padding for better appearance */
+        font-family: 'Plus Jakarta Sans', sans-serif; /* Change the font family */
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    #inputIngredients::placeholder {
+        font-family: 'Plus Jakarta Sans', sans-serif; /* Change the font family */
+        font-size: 18px;
+        font-weight: lighter;
+    }
+    .recipe-title {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center; 
+    }
+    .recipe-info {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .recipe-info p {
+        margin: 0; 
+    }
+
+
+    .recipe-steps {
+        margin-left: 30px;
+        justify-content: space-evenly;
+        font-weight: lighter
+    }
+
+    .plots-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 20px; /* Add some space between the plots and the recipe boxes */
+        margin: auto; /* Center align the container */
+    }
+
+    .plot {
+        flex: 1; /* Make the plots flexible to fit the container */
+        margin-right: 0px; /* Add some space between the plots */
+        margin-left: 48px;
+        padding: 0px;
+        max-width: 48%;
+    }
+    .plot:last-child {
+        margin-right: 0px;
+        margin-left: 0px; /* Remove right margin from the last plot */
+    }
+
+    </style>
+</head>
+<body>
+
+<div class="top-box"> 
+    <div style="width: 600px; margin: 0 auto; text-align: center;">
+        <h1 style="font-size: 36px; margin-bottom: 10px;">Personalized Recipes</h1>
+        <h2 style="font-size: 22px; color: white; margin-top: 5px; font-weight: normal;">Find simplified meals that match your ingredients and dietary restrictions</h2>
+    </div>
+    <form id="recipeForm" style="margin-top: 30px;">
+       
+        <textarea id="inputIngredients" name="inputIngredients" rows="1" cols = "68" placeholder=" Enter Ingredients..."></textarea><br>
+    <!-- <image src="https://cdn-icons-png.flaticon.com/128/45/45605.png"></image>
+    <div style="width: 600px; margin: 0 auto;">
+        <h1 style="text-align: center;">Simplify meal planning with personalized recipes that match your ingredients and dietary requirements.</h1>
+    </div>
+    <form id="recipeForm">
+        
+        <textarea id="inputIngredients" name="inputIngredients" rows="1" cols = "68" placeholder=" Enter Ingredients"></textarea><br> -->
+
+        <div class="dropdown-container">
+            <div class="dropdown-label">Select Cuisine</div>
+            <select id="cuisine" name="cuisine" class="dropdown-select">
+                <option value="No preference">No preference</option>
+                <option value="Australian">Australian</option>
+                <option value="Canadian">Canadian</option>
+                <option value="European">European</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="American">American</option>
+                <option value="African">African</option>
+                <option value="Indian">Indian</option>
+                <option value="Russian">Russian</option>
+                <option value="Asian">Asian</option>
+                <option value="Oceanian">Oceanian</option>
+                <option value="Caribbean/Latin American">Caribbean/Latin American</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-label">Select Diet Type</div>
+            <select id="diet" name="diet" class="dropdown-select big-select" multiple>
+                <option value="No preference">No preference</option>
+                <option value="Gluten Free">Gluten Free</option>
+                <option value="Dairy Free">Dairy Free</option>
+                <option value="Special Nutrient Food">Special Nutrient Food</option>
+                <option value="Low Carb">Low Carb</option>
+                <option value="Low Protein">Low Protein</option>
+                <option value="Diabetic Friendly">Diabetic Friendly</option>
+                <option value="Kosher">Kosher</option>
+                <option value="High Protein">High Protein</option>
+                <option value="High Fiber">High Fiber</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Healthy">Healthy</option>
+                <option value="Low Calorie">Low Calorie</option>
+                <option value="Low Fat">Low Fat</option>
+                <option value="Low Saturated Fat">Low Saturated Fat</option>
+                <option value="Low Sodium">Low Sodium</option>
+                <option value="Low Cholesterol">Low Cholesterol</option>
+                <option value="Vegan">Vegan</option>
+                <option value="High Calcium">High Calcium</option>
+                <option value="Lactose Free">Lactose Free</option>
+                <option value="Non Vegetarian">Non Vegetarian</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-label">Select Time to Make</div>
+            <select id="time" name="time" class="dropdown-select">
+                <option value="No preference">No preference</option>
+                <option value="Within 15 minutes">Within 15 minutes</option>
+                <option value="Within 30 minutes">Within 30 minutes</option>
+                <option value="Within 1 hour">Within 1 hour</option>
+                <option value="Within 2 hours">Within 2 hours</option>
+                <option value="Within 3 hours">Within 3 hours</option>
+                <option value="More than 4 hours">More than 4 hours</option>
+            </select>
+        </div>
+
+        <div class="form-right">
+            <button type="submit">Get Recommendations</button>
+        </div>
+    </form>
+</div>
+
+<div class="centered-content"> <!-- Added a new div for centering content -->
+    <div class="bottom-box"> <!-- Apply the new class to the bottom box -->
+        <div id="recommendations">
+            <!-- Recommendations will be displayed here -->
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.dropdown-label').click(function() {
+        var $select = $(this).next('.dropdown-select');
+        $select.toggle();
+        $button.toggle();
+    });
+
+    $('#recipeForm').submit(function(event) {
+        event.preventDefault();
+
+        var inputIngredients = $('#inputIngredients').val();
+        var cuisine = $('#cuisine').val();
+        var selectedDiets = $('#diet').val();
+        var time = $('#time').val();
+        var requestData = {
+            input_str: inputIngredients,
+            cuisine: cuisine,
+            diet_type: selectedDiets,
+            time_to_make: time
+        };
+
+
+    // NEW
+        $.ajax({
+            type: 'POST',
+            url: '/api/recommendations',
+            contentType: 'application/json',
+            data: JSON.stringify(requestData),
+            success: function(response) {
+                displayRecommendations(response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                $('#recommendations').html('<p>Sorry! No recipes found, please try a different input!</p>');
+            }
+        });
+    });
+
+
+    
+function displayRecommendations(recipes) {
+        if (typeof recipes === 'string') {
+            $('#recommendations').html('<p>' + recipes + '</p>');
+        } else {
+            if (recipes.length === 0) {
+                $('#recommendations').html('<p>Sorry! No recipes found, please try a different input!</p>');
+            } else {
+            var html = '<h2>Recommended Recipes</h2>';
+        recipes.forEach(function(recipe) {
+                html += '<div class="recipe-box">';
+                html += '<h3 class="recipe-title">' + recipe.name + '</h3>';
+                html += '<div class="recipe-info">';
+                html += '<p><strong>Ingredients:</strong> ' + recipe.ingredients + '</p>';
+                html += '<p><strong>Time to make (in minutes):</strong> ' + recipe.minutes + '</p>';
+                html += '</div>';
+                html += '<div class="recipe-steps">';
+                html += '<p><strong>Steps:</strong> ' + recipe.steps + '</p>';
+                html += '</div>';
+                html += '<div class="plots-container">';
+                html += '<div class="plot">';
+                html += '<h3>Ratings Distribution:</h3>';
+                html += '<img src="data:image/png;base64,' + recipe.ratings_plot + '" alt="Ratings Plot" />';
+                html += '</div>';
+                html += '<div class="plot">';
+                html += '<h3>Nutritional Content:</h3>';
+                html += '<img src="data:image/png;base64,' + recipe.nutrition_plot + '" alt="Nutrition Plot" />';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+            });
+            $('#recommendations').html(html);
+        }
+    }
+}
+
+ 
+ 
+ 
+});
+</script>
+ 
+</body>
+</html>
+{% endblock %}
