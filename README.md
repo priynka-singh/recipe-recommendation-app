@@ -3,6 +3,13 @@
 
 A Recipe Recommendation System built with Flask, providing users with personalized recipe suggestions based on input ingredients, cuisine preferences, diet type, and time constraints.
 
+## Table of Contents
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Overview
 The Recipe Recommendation System is a Flask-based web application designed to help users discover new recipes tailored to their preferences. It utilizes an algorithm based on TF-IDF along with cosine similarity to analyze user input and generate personalized recipe suggestions. Users can specify ingredients, cuisine preferences, diet type, and time constraints to receive customized recommendations.
 
