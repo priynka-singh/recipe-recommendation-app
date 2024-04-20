@@ -75,13 +75,11 @@ Please ensure that your code adheres to the project's coding standards and inclu
 
 ## Project Structure
 
-- **env**: Contains the virtual environment for the project.
 - **templates**: Includes HTML templates used for rendering web pages.
 - **static**: Stores static files such as CSS, JavaScript, and images.
-- **.env**: Configuration file for storing environment variables.
 - **app.yaml**: Configuration file for deploying the application on Google Cloud Platform.
 - **Dockerfile**: Defines the steps to create a Docker image for the Flask application.
-- **.dockerignore**: Specifies files and directories to be excluded when building a Docker image.
-
+- **notebooks**: Includes python notebooks for data cleaning, processing and modelling
+  
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
