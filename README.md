@@ -2,10 +2,11 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/priynka-singh/recipe-recommendation-app/pull/new/master)
 
 A Recipe Recommendation System built with Flask, providing users with personalized recipe suggestions based on input ingredients, cuisine preferences, diet type, and time constraints.
+Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to access the deployed version of the Recipe Recommendation System hosted on Google Cloud Platform.
 
 ## Table of Contents
 - [Overview](#overview)
-- [Getting Started](#getting-started)
+- [Setting up the Environment](#setting-up-the-environment)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Project Structure](#project-structure)
@@ -61,6 +62,9 @@ By following these steps, you'll have the Flask app up and running on your local
 - **Select Preferences:** Choose your cuisine preferences, diet type, and desired cooking time from the dropdown menus.
 - **Get Recommendations:** Click the "Get Recommendations" button to receive personalized recipe suggestions based on your input.
 - **Explore Recipes:** Browse through the recommended recipes, view ingredients, cooking steps, and additional details.
+
+Once you've familiarized yourself with the application locally, you can also try it out live on the web. Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to access the deployed version of the Recipe Recommendation System hosted on Google Cloud Platform.
+
 
 ## Contributing
 Contributions to the Recipe Recommendation System are welcome! Here's how you can contribute:
