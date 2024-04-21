@@ -101,7 +101,9 @@ Please ensure that your code adheres to the project's coding standards and inclu
 - **app.yaml**: Configuration file for deploying the application on Google Cloud Platform.
 - - **app.py**: Python script for running the flask app.
 - **Dockerfile**: Defines the steps to create a Docker image for the Flask application.
-- **notebooks**: Includes Python notebooks for data cleaning, processing and modelling
+- **notebooks**: Includes Python notebooks for data cleaning, processing and modelling.
+- **Recipe_data.ipynb**: Merges raw datasets and saves as new CSV file.
+- **recipe_clean.ipynb**: Removes duplicates and null values from merged dataset created by Recipe_data.ipynb.
   
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
