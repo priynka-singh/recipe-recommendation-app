@@ -1,4 +1,4 @@
-# Flask Recipe Recommendation System
+# Recipe Recommendation System
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/priynka-singh/recipe-recommendation-app/pull/new/master)
 
 The Recipe Recommendation System provides users with personalized recipe suggestions based on input ingredients, cuisine preferences, diet type, and time constraints.
