@@ -104,7 +104,7 @@ Please ensure that your code adheres to the project's coding standards and inclu
 - **templates**: Includes HTML templates used for rendering web pages.
 - **static**: Stores static files such as CSS, JavaScript, and images.
 - **app.yaml**: Configuration file for deploying the application on Google Cloud Platform.
-- - **app.py**: Python script for running the flask app.
+    - **app.py**: Python script for running the flask app.
 - **Dockerfile**: Defines the steps to create a Docker image for the Flask application.
 - **notebooks**: Includes Python notebooks for data cleaning, processing and modelling.
 - **Recipe_data.ipynb**: Merges raw datasets and saves as new CSV file.
