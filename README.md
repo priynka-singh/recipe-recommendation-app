@@ -1,7 +1,7 @@
 # Flask Recipe Recommendation System
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/priynka-singh/recipe-recommendation-app/pull/new/master)
 
-A Recipe Recommendation System built with Flask, providing users with personalized recipe suggestions based on input ingredients, cuisine preferences, diet type, and time constraints.
+The Recipe Recommendation System provides users with personalized recipe suggestions based on input ingredients, cuisine preferences, diet type, and time constraints.
 Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to access the deployed version of the Recipe Recommendation System hosted on Google Cloud Platform.
 
 ## Table of Contents
@@ -19,7 +19,7 @@ The system provides an intuitive interface for users to input their preferences 
 
 ## Setting up the Environment
 
-To run the Flask Recipe Recommendation System locally, you'll need to set up a virtual environment and install the required dependencies. Here's how you can do it:
+To run the Flask-based Recipe Recommendation System locally, you will need to set up a virtual environment and install the required dependencies. Complete the following steps:
 
 1. **Clone the repository:**
     ```sh
@@ -53,21 +53,21 @@ To run the Flask Recipe Recommendation System locally, you'll need to set up a v
     ```
 
 6. **Access the application:**
-    Open a web browser and go to [http://localhost:5000](http://localhost:5000) to view the Recipe Recommendation System.
+    Open a web browser and navigate to [http://localhost:5000](http://localhost:5000) to view the Recipe Recommendation System.
 
-By following these steps, you'll have the Flask app up and running on your local machine.
+By following these steps, you will have the Flask app up and running on your local machine.
 
 ## Usage
 - **Input Ingredients:** Enter the ingredients you have on hand in the provided text area.
 - **Select Preferences:** Choose your cuisine preferences, diet type, and desired cooking time from the dropdown menus.
 - **Get Recommendations:** Click the "Get Recommendations" button to receive personalized recipe suggestions based on your input.
-- **Explore Recipes:** Browse through the recommended recipes, view ingredients, cooking steps, and additional details.
+- **Explore Recipes:** Browse through the recommended recipes, view ingredients, cooking steps, user ratings, and nutrition information.
 
-Once you've familiarized yourself with the application locally, you can also try it out live on the web. Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to access the deployed version of the Recipe Recommendation System hosted on Google Cloud Platform.
+Once you have familiarized yourself with the application locally, you can also try it out live on the web. Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to access the deployed version of the Recipe Recommendation System hosted on Google Cloud Platform.
 
 
 ## Contributing
-Contributions to the Recipe Recommendation System are welcome! Here's how you can contribute:
+Contributions to the Recipe Recommendation System are welcome! Here is how you can contribute:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/YourFeature`)
@@ -84,7 +84,7 @@ Please ensure that your code adheres to the project's coding standards and inclu
 - **app.yaml**: Configuration file for deploying the application on Google Cloud Platform.
 - - **app.py**: Python script for running the flask app.
 - **Dockerfile**: Defines the steps to create a Docker image for the Flask application.
-- **notebooks**: Includes python notebooks for data cleaning, processing and modelling
+- **notebooks**: Includes Python notebooks for data cleaning, processing and modelling
   
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
