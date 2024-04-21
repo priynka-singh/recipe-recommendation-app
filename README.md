@@ -6,6 +6,7 @@ Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to 
 
 ## Table of Contents
 - [Overview](#overview)
+- [Data Acquisition](#data-acquisition)
 - [Setting up the Environment](#setting-up-the-environment)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -16,6 +17,22 @@ Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to 
 The Recipe Recommendation System is a Flask-based web application designed to help users discover new recipes tailored to their preferences. It utilizes an algorithm based on TF-IDF along with cosine similarity to analyze user input and generate personalized recipe suggestions. Users can specify ingredients, cuisine preferences, diet type, and time constraints to receive customized recommendations.
 
 The system provides an intuitive interface for users to input their preferences and view recommended recipes. It also includes features for visualizing recipe ratings and nutrition information.
+
+## Data Acquisition
+1. Download the two raw datasets (RAW_recipes.csv and RAW_interactions.csv) from [Kaggle](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions/data)
+2. Merge the datasets based on the column column, ID, run recipe_data.ipynb
+3. Run recipe_clean.ipynb on the merged dataset to remove duplicates and null values
+4. Save the file as “no_duplicates_nulls.csv”
+5. Import no_duplicates_nulls.csv into OpenRefine
+6. Select the “steps” column and use the following GREL Expressions to ensure uniformity in the instruction set:
+    ```
+    value.toString().replace(/\b\d+\)\s*/, "")
+    ```
+    ```
+    value.toString().replace(/'\d',\s*/, "")
+    ```
+7. Save the file as “cleaned_recipe.csv”
+
 
 ## Setting up the Environment
 
