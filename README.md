@@ -18,20 +18,25 @@ The Recipe Recommendation System is a Flask-based web application designed to he
 
 The system provides an intuitive interface for users to input their preferences and view recommended recipes. It also includes features for visualizing recipe ratings and nutrition information.
 
-## Data Acquisition
+## Data Acquisition and Preprocessing
+
+To download the data and prepare it for use in the Recipe Recommendation System, complete the following steps:
+
 1. Download the two raw datasets (RAW_recipes.csv and RAW_interactions.csv) from [Kaggle](https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions/data)
-2. Merge the datasets based on the column column, ID, run recipe_data.ipynb
-3. Run recipe_clean.ipynb on the merged dataset to remove duplicates and null values
-4. Save the file as “no_duplicates_nulls.csv”
-5. Import no_duplicates_nulls.csv into OpenRefine
-6. Select the “steps” column and use the following GREL Expressions to ensure uniformity in the instruction set:
+2. Merge the datasets based on the column column, ID, by running recipe_data.ipynb
+3. Run recipe_clean.ipynb on the merged dataset from Step 2 to remove duplicates and null values
+4. Import the clean dataset from Step 3 into OpenRefine
+5. Select the “steps” column and use the following GREL Expressions to ensure uniformity in the instruction set:
     ```
     value.toString().replace(/\b\d+\)\s*/, "")
     ```
     ```
     value.toString().replace(/'\d',\s*/, "")
     ```
-7. Save the file as “cleaned_recipe.csv”
+6. Save the file as “cleaned_recipe.csv”
+7. Run “data-preprocessing-1.ipynb” using “cleaned_recipe.csv” to map specific words to predefined categories, remove outliers and extract nutritional values for each recipe
+8. Run “data-preprocessing-2.ipynb” to ensure complete merge two datasets and further filter to get the final dataset “final_dataset.csv”
+
 
 
 ## Setting up the Environment
