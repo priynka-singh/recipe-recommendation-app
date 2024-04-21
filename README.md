@@ -8,7 +8,7 @@ Visit [http://bit.ly/my-personal-recipes](http://bit.ly/my-personal-recipes) to 
 - [Overview](#overview)
 - [Data Acquisition](#data-acquisition)
 - [Setting up the Environment](#setting-up-the-environment)
-- [Usage](#usage)
+- [Application Usage](#application-usage)
 - [Contributing](#contributing)
 - [Project Structure](#project-structure)
 - [License](#license)
@@ -79,7 +79,7 @@ To run the Flask-based Recipe Recommendation System locally, you will need to se
 
 By following these steps, you will have the Flask app up and running on your local machine.
 
-## Usage
+## Application Usage
 - **Input Ingredients:** Enter the ingredients you have on hand in the provided text area.
 - **Select Preferences:** Choose your cuisine preferences, diet type, and desired cooking time from the dropdown menus.
 - **Get Recommendations:** Click the "Get Recommendations" button to receive personalized recipe suggestions based on your input.
